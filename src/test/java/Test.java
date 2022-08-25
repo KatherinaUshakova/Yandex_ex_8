@@ -3,12 +3,10 @@ import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.Before;
-import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
-public class test {
+public class Test {
 
     String bearerToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmM2YTkwNTA0NmM5ZDAwM2QxNmY1Y2QiLCJpYXQiOjE2NjE0NDM2MzEsImV4cCI6MTY2MjA0ODQzMX0.3ftXNKQrkgiWNv0g-YafWp2_maCsZMQ90dtwXAzR4nA";
 
@@ -17,7 +15,7 @@ public class test {
         RestAssured.baseURI = "https://qa-mesto.praktikum-services.ru";
     }
 
-    @Test
+    @org.junit.Test
     @DisplayName("Add a new photo")
     @Description("This test is for adding a new photo to Mesto.")
     public void addNewPhoto() {
@@ -29,7 +27,7 @@ public class test {
                 .then().statusCode(201); // Проверяем код ответа
     }
 
-    @Test
+    @org.junit.Test
     @DisplayName("Like the first photo")
     @Description("This test is for liking the first photo on Mesto.")
     public void likeTheFirstPhoto() {
