@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import org.junit.Before;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class Test {
 
@@ -64,4 +65,13 @@ public class Test {
                 .then().assertThat().statusCode(200); // Проверяем, что сервер вернул код 200
     }
 
+    @org.junit.Test
+    @DisplayName("Check user name")
+    @Description("This test is for check current user's name.")
+    public void checkUserName() {
+        given()
+                .auth().oauth2(bearerToken) // Передаём токен для аутентификации
+                .get("/api/users/me") // Делаем GET-запрос
+                .then().assertThat().body("data.name", equalTo("Incorrect Name")); // Проверяем, что имя соответствует ожидаемому
+    }
 }
